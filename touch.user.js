@@ -123,13 +123,13 @@
 
     var touch_pad = {
         parameters: {
-            position_x: 0.517,
-            position_y: 0.697,
-            original_height: 820,
+            position_x: 0.25,
+            position_y: 0.085,
+            original_height: 192*4.5,
             bar_height: 30,
             ratio: 9 / 16,
-            screen_height: 240,
-            screen_width: 320
+            screen_height: 192,
+            screen_width: 256
         },
 
         settings: {
