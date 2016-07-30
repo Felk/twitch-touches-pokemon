@@ -123,13 +123,14 @@
 
     var touch_pad = {
         parameters: {
-            position_x: 0.25,
-            position_y: 0.085,
-            original_height: 192*4.5,
-            bar_height: 30,
-            ratio: 9 / 16,
-            screen_height: 192,
-            screen_width: 256
+            position_x: 384.0/1920.0,
+            position_y: 92.0/1080.0,
+            original_height: 1080,
+            bar_height: 0,
+            ratio: 9.0 / 16.0,
+            screen_height: 192*4.5,
+            screen_width: 256*4.5,
+            scale: 4.5
         },
 
         settings: {
@@ -138,14 +139,15 @@
         },
         settings_key: 'twitch-touches-pokemon',
 
-        scale: 1,
-
+        scale: 4.5,
+        
         interval_handle: (window.touch_pad === undefined ? undefined : touch_pad.interval_handle),
 
         // reflect mouse event to coordinate output.
         coords: function (event) {
-            var x = Math.floor((event.pageX - $(event.target).offset().left) / touch_pad.scale);
-            var y = Math.floor((event.pageY - $(event.target).offset().top) / touch_pad.scale);
+            var scale = touch_pad.scale * touch_pad.parameters.scale;
+            var x = Math.floor((event.pageX - $(event.target).offset().left) / scale);
+            var y = Math.floor((event.pageY - $(event.target).offset().top) / scale);
             x = Math.min(Math.max(x, 1), touch_pad.parameters.screen_width);
             y = Math.min(Math.max(y, 1), touch_pad.parameters.screen_height);
             return x + ',' + y;
